@@ -1,6 +1,5 @@
 <h1 align="center">Hi 👋, I'm Baz</h1>
 
-<!-- <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=baz-sh" alt="baz-sh" /></a> </p> -->
 <p>I'm a software engineer from Manchester, UK with a passion for building scalable and reliable systems. I have experience in building and maintaining distributed systems, cloud infrastructure, and web applications. I'm always looking to learn new things and improve my skills.</p>
 
 <h4 align="left">Languages and Tools:</h4>
