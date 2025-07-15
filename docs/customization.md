@@ -10,7 +10,7 @@ Here’s an overview of folders relevant to customization:
 |--------------------------|-----------------------------------------------------------|
 | `src/assets/`            | Fonts and static images (e.g., avatar, meta image)        |
 | `src/components/`        | UI and layout components (header, footer, etc.)           |
-| `src/content/`           | Editable content: jobs, links, posts, talks, pages        |
+| `src/content/`           | Editable content: jobs, links, posts, pages               |
 | `src/layouts/`           | Astro layout templates                                    |
 | `src/pages/`             | Page routing (`index.astro`, `writing/`)                  |
 | `src/styles/global.css`  | Global CSS and utility styles                             |
