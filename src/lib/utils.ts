@@ -34,3 +34,9 @@ export const sortJobsByDate = (jobs: CollectionEntry<'jobs'>[]) => {
     return nextEnd - currentEnd || next.data.from - current.data.from;
   });
 };
+
+export const sortPostsByDate = (posts: CollectionEntry<'posts'>[]) => {
+  return posts.sort((current, next) => {
+    return new Date(next.data.date).getTime() - new Date(current.data.date).getTime();
+  });
+};
