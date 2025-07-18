@@ -10,18 +10,27 @@ seo:
 ---
 
 Using the terminal today is almost essential, especially if you want to be fast and
-efficient. My current shell of choice is ZSH (specifically; oh-my-zsh), which is
+efficient when it comes to using your computer and executing commands. Wherever
+possible, I like to keep my tooling simple and effective so I can focus on the task at
+hand.
+
+My current shell of choice is ZSH (specifically; oh-my-zsh), which is
 highly customizable and extensible. There are many plugins available that can
 enhance your ZSH experience and boost your productivity and here are some useful ZSH
 plugins that I find help maximize my terminal experience for not a lot of effort.
 
 I am aware there are many other shells and plugins and would really like to try something
-like Fish, but I'm too busy with other priorities right now. With that out the way, here are some
-of my favorite ZSH plugins!
+like Fish, but I'm too busy with other priorities right now. With that out the way,
+here are some of my favorite ZSH plugins that I believe offer a lot of value for minimal
+amount of effort and configuration.
 
 ## Git
 
-Comes by default with oh-my-zsh, it's a really great default!
+Comes by default with oh-my-zsh, it's a really great default! This plugin provides a
+set of aliases and functions for working with Git. It simplifies many common Git
+commands and makes it easier to work with Git repositories directly from the terminal.
+For example, instead of typing `git status`, you can simply type `gst`. Here are
+some other examples of the aliases provided by the Git plugin:
 
 ```zsh
 # Examples!
@@ -30,10 +39,20 @@ gaa # git add all
 gc -m "foo!" # git commit with message
 ```
 
-This really is a great plugin that provides a lot of useful aliases and functions for
-working with Git. It simplifies many common tasks and makes it easier to work with
-Git repositories directly from the terminal. See the full cheat sheet here:
-[Git Cheat Sheet](https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index)
+Like many tools I often find a good way to learn is to _need_ it. What I mean by this
+is if you are aware of a tool, install it and try some of the "porcelain" commands
+like `gst`, `ga`, `gc`, etc. and then try to expand on the commands as and when you need
+them. Initially this will absolutely slow you down, but it's a compound investment
+that means you'll get that time back and learn more about the tool. Sure, it's
+possibly a slower way to use it in order to learn it, but I find I get more out of
+it and learn better when I actually need something, rather than reading the docs and
+trying to remember and recall everything. I've wasted many hours in the past reading
+_all_ the commands etc only to need to go look them up again once I've come to need it,
+so save that initial effort and use the high level stuff and look the others up
+as you need to.
+
+You can also find a full list of aliases in the
+[oh-my-zsh Git Cheat Sheet](https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index).
 
 ## ZSH Autosuggestions
 
@@ -41,13 +60,13 @@ Git repositories directly from the terminal. See the full cheat sheet here:
 It suggests commands as you type based on your command history and completions. This can
 significantly speed up your workflow by reducing the amount of typing you need to do!
 
-To complete, simply press the right arrow key to accept the suggestion, or continue typing to ignore it.
+To complete, simply press the right arrow key to accept the suggestion, or continue
+typing to ignore it.
 
 ## ZSH Syntax Highlighting
 
 [ZSH Syntax Highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-
-Provides syntax highlighting for your command line input, making it easier to spot
+provides syntax highlighting for your command line input, making it easier to spot
 errors and understand the structure of your commands. It highlights commands as you
 type, which can help you catch mistakes before you run them.
 
@@ -56,12 +75,6 @@ invalid command will be highlighted in red. This visual feedback can help you av
 common mistakes and improve your command line experience.
 
 ![ZSH Syntax Highlighting Demo](./zsh-syntax.gif)
-
-```zsh
-# Example
-echo "Hello, World!"      # This will be highlighted in green as it recognises echo as valid
-ecchhhooo "Hello, World!" # This will be highlighted in red as it recognises "ecchhhooo" as invalid
-```
 
 ## Atuin
 
