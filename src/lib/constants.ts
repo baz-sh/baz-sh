@@ -29,7 +29,7 @@ export const DEFAULT_CONFIGURATION: DefaultConfigurationType = {
     avatar,
     name: 'Barry Hall',
     headline: 'Senior Software Engineer',
-    username: 'bazsh',
+    username: 'baz.sh',
     location: 'Manchester, UK'
   },
   seo: {
