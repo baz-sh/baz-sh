@@ -18,6 +18,16 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  image: {
+      service: {
+        entrypoint: 'astro/assets/services/sharp',
+        config: {
+          limitInputPixels: 268402689, // Increase pixel limit (default is ~268M pixels)
+          // or set to false to disable the limit entirely (use with caution)
+          // limitInputPixels: false
+        }
+      }
+    },
   integrations: [
     react(),
     sitemap(),
