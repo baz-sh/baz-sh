@@ -78,4 +78,63 @@ common mistakes and improve your command line experience.
 
 ## Atuin
 
-[Atuin](https://github.com/atuinsh/atuin)
+Your command history is a valuable resource, [Atuin](https://github.com/atuinsh/atuin)
+is a tool that helps you manage that history. Think of it as a better version of
+the default history when you use `control + r`. It provides a rich featureset that
+allows you to search, filter, and replay your command history, making it easier
+to find and reuse commands you've run in the past. I was pretty good at using the
+stock history, hitting `control + r` multiple times and searching for commands, but
+Atuin has changed the way I use it and I find it much more useful.
+
+![Atuin Search](./zsh-atuin-search.gif)
+
+Atuin works by storing your command history in a SQLite database, which can be synced
+across devices using a cloud storage provider like Dropbox or Google Drive, but
+this is a purely optional feature.
+
+It's very eash to configure, simply create a file at `~/.config/atuin/config.toml`
+and you are off and running. Some config options I really like include:
+
+```toml
+filter_mode_shell_up_key_binding = "directory"
+```
+
+This one means when I use the up arrow key, it will filter the history
+by the current directory, which is super useful when you are working in a specific
+directory and want to find commands related to that directory.
+
+A bunch of things I like to filter out of my history include:
+
+```toml
+history_filter = [
+   "^secret-cmd",
+   "^innocuous-cmd .*--secret=.+",
+   "^ls",
+   "^cd",
+   "^j ",
+   "^git ",
+   "^clear$",
+   "^exit$",
+   "^cl$",
+]
+```
+
+An important point to note is that after you've chosen to remove something,
+you'll need to run `atuin history prune` to remove them from the SQLite database.
+
+This is so I don't see tons of entries of commands I don't care about, like
+`ls`, `cd`, `clear`, etc.
+
+You can either press `tab` from the list to add an entry to then adjust or run
+it, or you can press `enter` to run the command directly. I find this
+super useful when I want to run a command I used before, but I want to adjust it.
+
+![Atuin Demo](./zsh-atuin-delete.gif)
+
+Another cool trick I leared is if you accidentally run a failing command, you can
+remove it from your history. With an entry from search highlighted, you can
+press `control + a` followed by `d`. You don't have to do this, but I get ocd
+at times with things on my system so I personally like this one.
+
+And that's it for my current favorite ZSH plugins and tools,
+I hope you find this useful or inspiring to visit your own tooling too!
