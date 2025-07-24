@@ -1,12 +1,5 @@
 :root {
-  font-family: var(--font-inter), sans-serif;
-}
-
-@supports (font-variation-settings: normal) {
-  :root {
-    font-family: var(--font-inter-variable), sans-serif;
-    font-optical-sizing: auto;
-  }
+  font-family: var(--font-zilla-slab), serif;
 }
 
 @import 'tailwindcss';
@@ -55,10 +48,11 @@
   --color-headings: var(--palette-800);
   --color-border: var(--palette-300);
 
-  --font-sans: var(--font-inter), 
-    ui-sans-serif, 
-    system-ui, 
-    sans-serif, 
+  --font-sans: var(--font-zilla-slab), 
+    Georgia, 
+    'Times New Roman', 
+    Times, 
+    serif, 
     'Apple Color Emoji', 
     'Segoe UI Emoji', 
     'Segoe UI Symbol', 
