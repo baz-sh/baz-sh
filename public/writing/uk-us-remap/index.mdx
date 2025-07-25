@@ -1,0 +1,55 @@
+---
+title: US - UK Key Remap for Mac
+date: 2025-07-22
+image: ./us-uk.png
+seo:
+  title: US - UK Key remap for Mac
+  description: A guide to remapping keys on Mac for US and UK layouts
+  type: article
+  keywords: blog
+---
+
+A short post on keyboard mappings!
+
+One thing I find with programming is that the `US` keyboard layout is the most
+common and most widely used, especially when you see all the mechanical keyboards etc.
+However, I am from the UK and use a `UK` keyboard layout.
+
+Over time I've wanted to switch to the US, so I have bought an external Apple keyboard
+that is `US` layout, but I still use my MacBook Air a lot and it has a `UK` layout.
+This can be a bit of a pain when switching between the two, especially when it comes
+to the `§` symbol and the backtick symbol (**`**) .
+
+I've managed to find a way to remap the keys on my Mac so that I can use the same
+layout consistently, it works by flipping them around when required and flipping them
+back when not. It gets a tad tricky when I'm using the Air keyboard as that's when
+I need the map and when I'm using the external keyboard I need to remove the map,
+as it's already the correct layout.
+
+Next time I upgrade my Mac (which I'm waiting for the 2026 redesign)
+I'll go straight to `US` layout, but for now this is a good workaround.
+
+I've added the following to my `.zshrc` file to handle the remapping:
+
+```zsh
+key_map() {
+  hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}'
+}
+
+key_reset() {
+  hidutil property --set '{"UserKeyMapping":[]}'
+}
+```
+
+What this does is when I'm using the Air keyboard I can run `key_map` to remap the keys
+to my preferred layout, and when I'm using the external keyboard I can run `key_reset`
+to reset the keys back to the default `US` layout (for that keyboard).
+
+It's a bit fiddly, but it works for me in a sense that I can use a consistent layout
+that I prefer and rely on muscle memory to hit the right keys.
+
+A lot of what I find with computers is it's the little things. This might be a
+bit much for some people to go through, and I understand that, but for me, it's worth
+it. Plus you learn a bit along the way!
+
+Happy coding!
