@@ -1,5 +1,5 @@
 :root {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Styrene B', 'Lato', sans-serif;
 }
 
 @import 'tailwindcss';
@@ -48,7 +48,8 @@
   --color-headings: var(--palette-800);
   --color-border: var(--palette-300);
 
-  --font-sans: 'Lato', 
+  --font-sans: 'Styrene B', 
+    'Lato', 
     -apple-system, 
     BlinkMacSystemFont, 
     'Segoe UI', 
