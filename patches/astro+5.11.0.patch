@@ -1,0 +1,18 @@
+diff --git a/node_modules/astro/dist/vite-plugin-astro/index.js b/node_modules/astro/dist/vite-plugin-astro/index.js
+index 7b6661d..391a25d 100644
+--- a/node_modules/astro/dist/vite-plugin-astro/index.js
++++ b/node_modules/astro/dist/vite-plugin-astro/index.js
+@@ -206,10 +206,12 @@ File: ${id}`
+   };
+   return [prePlugin, normalPlugin];
+ }
++const SOURCE_MAP_COMMENT_START = "//# sourceMapping";
++const SOURCE_MAP_COMMENT_END = "URL=";
+ function appendSourceMap(content, map) {
+   if (!map) return content;
+   return `${content}
+-//# sourceMappingURL=data:application/json;charset=utf-8;base64,${Buffer.from(
++${SOURCE_MAP_COMMENT_START}${SOURCE_MAP_COMMENT_END}data:application/json;charset=utf-8;base64,${Buffer.from(
+     map
+   ).toString("base64")}`;
+ }
