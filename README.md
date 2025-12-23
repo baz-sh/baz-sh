@@ -1,11 +1,13 @@
 <h1 align="center">Hi 👋, I'm Baz</h1>
 
 <p>
-I'm a software engineer from Manchester, UK with a passion for tinkering with computers 
-and code! I have experience in building and maintaining distributed systems, 
+I'm a software engineer from Manchester, UK. I have a passion for tinkering with computers 
+and code since I was a child! I have experience in building and maintaining distributed systems, 
 cloud infrastructure, web and client applications with a variety of languages 
-and technologies. I'm always looking to learn new things and improve my skills!
+and technologies. I'm always looking to learn new things, meet new people and improve my skills!
 
-I have strong JS🟨/TS🟦 and Node🟢 background experience as well as Python🐍. More recently, I'm 
-building with and developing a passion for Golang⚡️ and through work, I'm starting my journey with Rust🦀
+Currently I am primarily using Golang⚡️, and recently started my journey with Rust🦀 on various projects
+at work. I also have strong experience with JS🟨/TS🟦, Node🟢 as well as Python🐍. 
+
+I'm a NeoVim user primarily developing via MacOS with containers 🐳
 </p>
