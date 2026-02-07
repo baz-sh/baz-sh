@@ -10,3 +10,7 @@ some ideas for posts.
 - [ ] Nuphy AIR v3?
 - [ ] Skills to automate workflows
 - [ ] You probably don't need MCP
+- [ ] RTT CLI
+- [ ] Raycast is awesome
+  > despite not using it anymore
+- [ ] DRY is an anti pattern
