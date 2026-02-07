@@ -43,15 +43,10 @@ const navLinks = [
         aria-label="Open menu"
         class="sm:hidden flex items-center justify-center w-8 h-8"
       >
-        <span id="hamburger-icon" class="flex flex-col gap-1.5">
-          <span class="hamburger-line w-5 h-0.5 bg-text-secondary transition-all origin-center"></span>
-          <span class="hamburger-line w-5 h-0.5 bg-text-secondary transition-all origin-center"></span>
-          <span class="hamburger-line w-5 h-0.5 bg-text-secondary transition-all origin-center"></span>
-        </span>
-        <span id="close-icon" class="hidden text-text-secondary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
-          </svg>
+        <span id="hamburger" class="relative w-4 h-3 flex flex-col justify-between">
+          <span class="hamburger-line block w-full h-[2px] bg-text-secondary rounded-full transition-all duration-300 origin-center"></span>
+          <span class="hamburger-line block w-full h-[2px] bg-text-secondary rounded-full transition-all duration-300 origin-center"></span>
+          <span class="hamburger-line block w-full h-[2px] bg-text-secondary rounded-full transition-all duration-300 origin-center"></span>
         </span>
       </button>
     </div>
@@ -68,7 +63,7 @@ const navLinks = [
             class:list={[
               'py-3 px-4 text-base font-medium rounded-xl transition-colors',
               link.isActive 
-                ? 'text-headings bg-card' 
+                ? 'text-accent bg-card' 
                 : 'text-text-secondary hover:text-headings hover:bg-card'
             ]}
           >
@@ -83,35 +78,42 @@ const navLinks = [
 <script>
   const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
-  const hamburgerIcon = document.getElementById('hamburger-icon');
-  const closeIcon = document.getElementById('close-icon');
+  const hamburger = document.getElementById('hamburger');
 
   let isOpen = false;
 
-  menuBtn?.addEventListener('click', () => {
-    isOpen = !isOpen;
+  function toggleMenu(open: boolean) {
+    isOpen = open;
     mobileMenu?.classList.toggle('hidden', !isOpen);
-    hamburgerIcon?.classList.toggle('hidden', isOpen);
-    closeIcon?.classList.toggle('hidden', !isOpen);
-  });
+    hamburger?.classList.toggle('open', isOpen);
+  }
+
+  menuBtn?.addEventListener('click', () => toggleMenu(!isOpen));
 
   // Close menu when clicking outside
   document.addEventListener('click', (e) => {
     if (isOpen && !menuBtn?.contains(e.target as Node) && !mobileMenu?.contains(e.target as Node)) {
-      isOpen = false;
-      mobileMenu?.classList.add('hidden');
-      hamburgerIcon?.classList.remove('hidden');
-      closeIcon?.classList.add('hidden');
+      toggleMenu(false);
     }
   });
 
   // Close menu when clicking a link
   mobileMenu?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      isOpen = false;
-      mobileMenu.classList.add('hidden');
-      hamburgerIcon?.classList.remove('hidden');
-      closeIcon?.classList.add('hidden');
-    });
+    link.addEventListener('click', () => toggleMenu(false));
   });
 </script>
+
+<style>
+  #hamburger.open .hamburger-line:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+  }
+  
+  #hamburger.open .hamburger-line:nth-child(2) {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  
+  #hamburger.open .hamburger-line:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg);
+  }
+</style>
