@@ -1,32 +1,117 @@
 ---
-import Container from '@/components/Container.astro';
-
 const pathname = Astro.url.pathname;
 
 const isHomePage = pathname === '/';
 const isWritingPage = pathname.startsWith('/writing');
+const isResumePage = pathname === '/resume';
 
+const navLinks = [
+  { href: '/', label: 'Home', isActive: isHomePage },
+  { href: '/writing', label: 'Writing', isActive: isWritingPage },
+  { href: '/resume', label: 'Resume', isActive: isResumePage },
+];
 ---
 
-<Container as='header' class="w-full max-w-full flex justify-center items-center">
-  <div class="w-max fixed top-0 mt-5 bg-muted-foreground/40 backdrop-blur-md border border-border rounded-full p-1">
-    <nav class="flex items-center">
-      <ul class="flex items-center gap-1">
-        <li>
-          <a href="/" class:list={[
-            'font-medium transition-colors block px-5 py-2',
-            'hover:text-headings',
-            isHomePage && 'text-headings bg-muted-foreground/40 rounded-full',
-          ]}>Home</a>
-        </li>
-        <li>
-          <a href="/writing" class:list={[
-            'font-medium transition-colors block px-5 py-2',
-            'hover:text-headings',
-            isWritingPage && 'text-headings bg-muted-foreground/40 rounded-full',
-          ]}>Writing</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</Container>
+<header class="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+  <nav class="max-w-[720px] mx-auto">
+    <!-- Nav Bar -->
+    <div class="nav-bar flex items-center justify-between px-5 py-3 border border-border rounded-full">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 group">
+        <span class="w-2 h-2 rounded-full bg-accent group-hover:scale-125 transition-transform"></span>
+        <span class="text-sm font-semibold tracking-wide text-headings uppercase">baz.sh</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden sm:flex items-center gap-1">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'nav-link',
+              link.isActive && 'nav-link-active'
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        aria-label="Open menu"
+        class="sm:hidden flex items-center justify-center w-8 h-8"
+      >
+        <span id="hamburger-icon" class="flex flex-col gap-1.5">
+          <span class="hamburger-line w-5 h-0.5 bg-text-secondary transition-all origin-center"></span>
+          <span class="hamburger-line w-5 h-0.5 bg-text-secondary transition-all origin-center"></span>
+          <span class="hamburger-line w-5 h-0.5 bg-text-secondary transition-all origin-center"></span>
+        </span>
+        <span id="close-icon" class="hidden text-text-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div
+      id="mobile-menu"
+      class="sm:hidden hidden mt-2 p-2 bg-bg-elevated/95 backdrop-blur-md border border-border rounded-2xl shadow-lg"
+    >
+      <nav class="flex flex-col">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'py-3 px-4 text-base font-medium rounded-xl transition-colors',
+              link.isActive 
+                ? 'text-headings bg-card' 
+                : 'text-text-secondary hover:text-headings hover:bg-card'
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  let isOpen = false;
+
+  menuBtn?.addEventListener('click', () => {
+    isOpen = !isOpen;
+    mobileMenu?.classList.toggle('hidden', !isOpen);
+    hamburgerIcon?.classList.toggle('hidden', isOpen);
+    closeIcon?.classList.toggle('hidden', !isOpen);
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (isOpen && !menuBtn?.contains(e.target as Node) && !mobileMenu?.contains(e.target as Node)) {
+      isOpen = false;
+      mobileMenu?.classList.add('hidden');
+      hamburgerIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    }
+  });
+
+  // Close menu when clicking a link
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      isOpen = false;
+      mobileMenu.classList.add('hidden');
+      hamburgerIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    });
+  });
+</script>

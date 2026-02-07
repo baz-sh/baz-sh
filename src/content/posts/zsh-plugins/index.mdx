@@ -136,27 +136,41 @@ remove it from your history. With an entry from search highlighted, you can
 press `control + a` followed by `d`. You don't have to do this, but I get ocd
 at times with things on my system so I personally like this one.
 
-## AutoJump
+## Zoxide
 
-I was going to wrap things up there but I've recently started using autojump
-and things it's definitely worth mentioning. [AutoJump](https://github.com/wting/autojump)
-learns as you navigate your system. So rather than constantly running something like
+I was going to wrap things up there but I've recently started using zoxide
+and it's definitely worth mentioning. [Zoxide](https://github.com/ajeetdsouza/zoxide)
+is a smarter `cd` command that learns as you navigate your system. It's inspired
+by autojump and z, but written in Rust so it's blazingly fast.
+
+To set it up, add this to your `.zshrc`:
+
+```bash
+eval "$(zoxide init zsh --cmd j)"
+```
+
+The `--cmd j` flag means you use `j` as the command (you can change this to
+whatever you like, or omit it to use `z` as the default).
+
+Now rather than constantly running something like:
 
 ```bash
 cd ~/Documents/Projects/SomeProject
 ```
 
-you can instead run;
+you can instead run:
 
 ```bash
 j SomeProject
 ```
 
 Say we have another project we've been working on called `AnotherProject`, and
-we've navigated to that directory, we can run `j AnotherProject` and it will jump
-to that directory, no matter where we are in the filesystem! That's pretty neat
-if you have to keep navigating various directories and the time saved is definitely
-starting to add up!
+we've navigated to that directory before. We can run `j AnotherProject` and it
+will jump to that directory, no matter where we are in the filesystem! Zoxide
+ranks directories by frequency and recency, so it gets better the more you use it.
+
+You can also use `ji` (or `ji SomeProject`) for interactive selection with fzf,
+which is handy when you have multiple matches.
 
 And that's it for my current favorite ZSH plugins and tools,
 I hope you find this useful or this has inspired you to visit your own tooling setup!

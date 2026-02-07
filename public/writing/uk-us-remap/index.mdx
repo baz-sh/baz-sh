@@ -12,24 +12,22 @@ seo:
 A short post on keyboard mappings!
 
 One thing I find with programming is that the `US` keyboard layout is the most
-common and most widely used, especially when you see all the mechanical keyboards etc.
-However, I am from the UK and use a `UK` keyboard layout.
+common and widely used, especially with mechanical keyboards. However, I'm from
+the UK and use a `UK` layout.
 
-Over time I've wanted to switch to the US, so I have bought an external Apple keyboard
-that is `US` layout, but I still use my MacBook Air a lot and it has a `UK` layout.
-This can be a bit of a pain when switching between the two, especially when it comes
-to the `§` symbol and the backtick symbol (**`**) .
+Over time I've wanted to switch to US, so I bought an external Apple keyboard
+with a `US` layout. But I still use my MacBook Air a lot and it has a `UK` layout.
+Switching between the two is a pain, especially for the `§` and <code>`</code> (backtick)
+keys - they're swapped between layouts.
 
-I've managed to find a way to remap the keys on my Mac so that I can use the same
-layout consistently, it works by flipping them around when required and flipping them
-back when not. It gets a tad tricky when I'm using the Air keyboard as that's when
-I need the map and when I'm using the external keyboard I need to remove the map,
-as it's already the correct layout.
+I've found a way to remap the keys so I can use the same layout consistently.
+It flips the two keys when I'm on the Air's built-in keyboard, then flips them
+back when I'm on the external. A bit fiddly, but it works.
 
-Next time I upgrade my Mac (which I'm waiting for the 2026 redesign)
-I'll go straight to `US` layout, but for now this is a good workaround.
+Next time I upgrade my Mac (waiting for the 2026 redesign) I'll go straight
+to `US` layout, but for now this is a solid workaround.
 
-I've added the following to my `.zshrc` file to handle the remapping:
+Here's what I added to my `.zshrc`:
 
 ```zsh
 key_map() {
@@ -41,15 +39,11 @@ key_reset() {
 }
 ```
 
-What this does is when I'm using the Air keyboard I can run `key_map` to remap the keys
-to my preferred layout, and when I'm using the external keyboard I can run `key_reset`
-to reset the keys back to the default `US` layout (for that keyboard).
+When I'm on the Air keyboard, I run `key_map`. When I switch to the external,
+I run `key_reset`. Simple.
 
-It's a bit fiddly, but it works for me in a sense that I can use a consistent layout
-that I prefer and rely on muscle memory to hit the right keys.
-
-A lot of what I find with computers is it's the little things. This might be a
-bit much for some people to go through, and I understand that, but for me, it's worth
-it. Plus you learn a bit along the way!
+This might be overkill for some people, but for me it's worth it. I get a
+consistent layout and can rely on muscle memory. Plus you learn a bit along
+the way!
 
 Happy coding!

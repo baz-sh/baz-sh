@@ -9,19 +9,27 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<li class="py-0.5">
-  <div class="flex gap-5">
-    <div class="relative min-w-28 shrink-0">
-      <span class="text-muted-foreground text-sm">{entry.data.from} - {entry.data.to}</span>
+<div class="card">
+  <div class="flex flex-col sm:flex-row sm:items-start gap-4 mb-4">
+    <div class="sm:w-28 shrink-0">
+      <span class="text-sm text-text-muted tabular-nums">
+        {entry.data.from} – {entry.data.to}
+      </span>
     </div>
-    <div class="flex flex-col gap-3">
-      <div class="flex flex-col">
-        <span class="text-headings font-medium">{entry.data.title}</span>
-        <span class="text-foreground text-sm">{entry.data.company}</span>
-      </div>
-      <div class="prose dark:prose-invert prose-sm">
-        <Content />
-      </div>
+    <div class="flex-1">
+      <h3 class="text-headings font-semibold">{entry.data.title}</h3>
+      <a 
+        href={entry.data.url} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="text-accent hover:text-accent-hover text-sm"
+      >
+        {entry.data.company}
+      </a>
+      <span class="text-text-muted text-sm"> · {entry.data.location}</span>
     </div>
   </div>
-</li>
+  <div class="prose prose-sm max-w-none">
+    <Content />
+  </div>
+</div>

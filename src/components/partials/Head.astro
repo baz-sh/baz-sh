@@ -21,7 +21,7 @@ const seoImage = generateAbsoluteUrl(image.src);
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   { seo?.canonicalUrl && <link rel="canonical" href={seo?.canonicalUrl} />}
   <title>{seo?.title || defaultSeo.title}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -30,7 +30,6 @@ const seoImage = generateAbsoluteUrl(image.src);
   <slot name="keywords">
     <meta name="keywords" content={seo?.keywords || defaultSeo.keywords} />
   </slot>
-  <meta name="generator" content={Astro.generator} />
   <meta name="robots" content={seo?.robots || defaultSeo.robots} />
   <!-- OpenGraph Meta -->
   <meta property="og:type" content={seo?.type ?? 'website'} />
@@ -48,13 +47,11 @@ const seoImage = generateAbsoluteUrl(image.src);
   <meta property="twitter:description" content={seo?.description || defaultSeo.description} />
   <meta property="twitter:image" content={seoImage} />
   <script is:inline>
-    // Prevent FOUC by applying theme before page renders
     (function() {
       const theme = localStorage.getItem('theme') || 
         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      }
+      document.documentElement.classList.add(theme);
+      document.documentElement.classList.remove(theme === 'dark' ? 'light' : 'dark');
     })();
   </script>
   <slot />

@@ -2,8 +2,8 @@
 import { getEntry, getCollection, render } from 'astro:content'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import Container from '@/components/Container.astro'
-import Author from '@/components/ui/Author.astro'
 import { DEFAULT_CONFIGURATION } from '@/lib/constants'
+import { Image } from 'astro:assets'
 
 const entry = await getEntry('pages', 'homepage')
 const { Content } = await render(entry)
@@ -11,55 +11,63 @@ const links = await getCollection('links')
 ---
 
 <BaseLayout seo={entry.data.seo}>
-    <Container as="section" class="py-6">
-        <Author {...DEFAULT_CONFIGURATION.author} />
-    </Container>
-
-    <Container as="section" class="py-6">
-        <div class="flex flex-col gap-6">
-            <div class="flex items-center">
-                <span class="text-headings">About</span>
-            </div>
-            <div class="prose dark:prose-invert">
-                <Content />
-            </div>
-            <div>
-                <a
-                    href="/resume"
-                    class="inline-flex items-center gap-2 rounded-full border border-border px-4 py-1.5 text-sm font-medium text-headings transition-colors hover:bg-muted-foreground/20"
-                >
-                    View Resume
-                    <span aria-hidden="true">→</span>
-                </a>
-            </div>
+  <Container as="article" class="py-12">
+    <!-- Hero Section -->
+    <header class="mb-12">
+      <div class="flex items-center gap-4 mb-6">
+        <Image
+          src={DEFAULT_CONFIGURATION.author.avatar}
+          alt={DEFAULT_CONFIGURATION.author.name}
+          width={64}
+          height={64}
+          class="rounded-full"
+        />
+        <div>
+          <h1 class="text-2xl font-bold text-headings">{DEFAULT_CONFIGURATION.author.name}</h1>
+          <p class="text-text-secondary">{DEFAULT_CONFIGURATION.author.headline}</p>
         </div>
-    </Container>
-    {
-        links.length > 0 && (
-            <Container as="section" class="py-8">
-                <div class="flex flex-col gap-5">
-                    <span class="text-headings">Contact</span>
-                    <ul class="flex flex-col gap-3">
-                        {links.map((link) => (
-                            <li class="py-0.5">
-                                <div class="flex items-center gap-5">
-                                    <span class="min-w-28 text-muted-foreground">
-                                        {link.data.label}
-                                    </span>
-                                    <a
-                                        class="text-headings font-medium"
-                                        rel="noopener noreferrer"
-                                        target="_blank"
-                                        href={link.data.url}
-                                    >
-                                        {link.data.name}
-                                    </a>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </Container>
-        )
-    }
+      </div>
+      {DEFAULT_CONFIGURATION.author.location && (
+        <p class="text-sm text-text-muted">{DEFAULT_CONFIGURATION.author.location}</p>
+      )}
+    </header>
+
+    <!-- About Section -->
+    <section class="mb-12">
+      <span class="label mb-4 block">About</span>
+      <div class="prose prose-lg max-w-none">
+        <Content />
+      </div>
+    </section>
+
+    <!-- Links -->
+    <section class="mb-12">
+      <a href="/resume" class="btn-secondary">
+        View Resume
+        <span aria-hidden="true">→</span>
+      </a>
+    </section>
+
+    <!-- Contact Section -->
+    {links.length > 0 && (
+      <section>
+        <span class="label mb-6 block">Contact</span>
+        <ul class="space-y-3">
+          {links.map((link) => (
+            <li class="flex items-center gap-6">
+              <span class="text-text-muted text-sm w-24 shrink-0">{link.data.label}</span>
+              <a
+                href={link.data.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-headings font-medium hover:text-accent transition-colors"
+              >
+                {link.data.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </Container>
 </BaseLayout>

@@ -2,8 +2,13 @@
 import Container from '@/components/Container.astro';
 ---
 
-<Container as='footer' class='pt-24'>
-  <p class="text-center text-muted-foreground text-sm">
-    &copy; {new Date().getFullYear()}. 
-  </p>
+<Container as="footer" class="py-16 mt-16">
+  <div class="divider mb-8"></div>
+  <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-text-muted">
+    <p>© {new Date().getFullYear()} baz.sh</p>
+    <div class="flex items-center gap-4">
+      <a href="/rss.xml" class="hover:text-text-secondary transition-colors">RSS</a>
+      <a href="https://github.com/baz-sh" target="_blank" rel="noopener noreferrer" class="hover:text-text-secondary transition-colors">GitHub</a>
+    </div>
+  </div>
 </Container>

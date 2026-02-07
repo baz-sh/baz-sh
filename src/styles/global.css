@@ -1,7 +1,3 @@
-:root {
-  font-family: 'Styrene B', 'Lato', sans-serif;
-}
-
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 @config '../../tailwind.config.mjs';
@@ -9,47 +5,52 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --palette-base: #fff;
-  --palette-50: oklch(0.98 0.005 95.9); /* #fafafa */
-  --palette-100: oklch(0.97 0.003 107.8); /* #f5f5f5 */
-  --palette-200: oklch(0.93 0.003 107.8); /* #e5e5e5 */
-  --palette-300: oklch(0.89 0.003 107.8); /* #d4d4d4 */
-  --palette-400: oklch(0.74 0.003 107.8); /* #a3a3a3 */
-  --palette-500: oklch(0.6 0.003 107.8); /* #737373 */
-  --palette-600: oklch(0.5 0.003 107.8); /* #525252 */
-  --palette-700: oklch(0.45 0.003 107.8); /* #404040 */
-  --palette-800: oklch(0.35 0.003 107.8); /* #262626 */
-  --palette-900: oklch(0.3 0.003 107.8); /* #171717 */
-  --palette-950: oklch(0.25 0.003 107.8); /* #0a0a0a */
+  /* Dark theme (default) - inspired by StrongDM */
+  --color-bg: #05080f;
+  --color-bg-elevated: #0a0f1a;
+  --color-text: #e4e4e7;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
+  --color-headings: #fafafa;
+  --color-accent: #22a6b8;
+  --color-accent-hover: #2dd4bf;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-strong: rgba(255, 255, 255, 0.2);
+  --color-card: rgba(255, 255, 255, 0.03);
+  --color-card-hover: rgba(255, 255, 255, 0.06);
 }
 
-.dark {
-  --palette-base: #000;
-  --palette-50: oklch(0.25 0.003 107.8); /* #0a0a0a */
-  --palette-100: oklch(0.3 0.003 107.8); /* #171717 */
-  --palette-200: oklch(0.35 0.003 107.8); /* #262626 */
-  --palette-300: oklch(0.4 0.003 107.8); /* #373737 */
-  --palette-400: oklch(0.5 0.003 107.8); /* #525252 */
-  --palette-500: oklch(0.67 0.003 107.8); /* #8a8a8a */
-  --palette-600: oklch(0.74 0.003 107.8); /* #a3a3a3 */
-  --palette-700: oklch(0.89 0.003 107.8); /* #d4d4d4 */
-  --palette-800: oklch(0.93 0.003 107.8); /* #e5e5e5 */
-  --palette-900: oklch(0.97 0.003 107.8); /* #f5f5f5 */
-  --palette-950: oklch(0.98 0.005 95.9); /* #fafafa */
+.light {
+  --color-bg: #fafafa;
+  --color-bg-elevated: #ffffff;
+  --color-text: #3f3f46;
+  --color-text-secondary: #52525b;
+  --color-text-muted: #a1a1aa;
+  --color-headings: #18181b;
+  --color-accent: #0d9488;
+  --color-accent-hover: #14b8a6;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-border-strong: rgba(0, 0, 0, 0.2);
+  --color-card: rgba(0, 0, 0, 0.02);
+  --color-card-hover: rgba(0, 0, 0, 0.04);
 }
 
 @theme inline {
   --spacing: 4px;
-  --color-white: #fff;
-  --color-black: #000;
-  --color-background: var(--palette-50);
-  --color-foreground: var(--palette-600);
-  --color-muted-foreground: var(--palette-400);
-  --color-headings: var(--palette-800);
-  --color-border: var(--palette-300);
+  --color-bg: var(--color-bg);
+  --color-bg-elevated: var(--color-bg-elevated);
+  --color-text: var(--color-text);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+  --color-headings: var(--color-headings);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+  --color-card: var(--color-card);
+  --color-card-hover: var(--color-card-hover);
 
-  --font-sans: 'Styrene B', 
-    'Lato', 
+  --font-sans: 'Inter', 
     -apple-system, 
     BlinkMacSystemFont, 
     'Segoe UI', 
@@ -60,4 +61,234 @@
     'Segoe UI Emoji', 
     'Segoe UI Symbol', 
     'Noto Color Emoji';
+    
+  --font-display: 'Zilla Slab',
+    Georgia,
+    'Times New Roman',
+    serif;
+}
+
+html {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fixed background for dark mode */
+.dark body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  background: var(--color-bg);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-headings);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+/* Prose styling for content */
+.prose {
+  --tw-prose-body: var(--color-text);
+  --tw-prose-headings: var(--color-headings);
+  --tw-prose-links: var(--color-accent);
+  --tw-prose-bold: var(--color-headings);
+  --tw-prose-bullets: var(--color-text-muted);
+  --tw-prose-quotes: var(--color-text-secondary);
+  --tw-prose-quote-borders: var(--color-border-strong);
+  --tw-prose-code: var(--color-headings);
+  --tw-prose-pre-code: var(--color-text);
+  --tw-prose-pre-bg: var(--color-bg-elevated);
+  --tw-prose-hr: var(--color-border);
+}
+
+.prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  color: var(--color-accent-hover);
+}
+
+.prose code:not(pre code) {
+  background: var(--color-card);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* Remove backticks that Tailwind Typography adds around inline code */
+.prose code:not(pre code)::before,
+.prose code:not(pre code)::after {
+  content: none;
+}
+
+.prose pre {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--color-accent);
+  font-style: italic;
+}
+
+.prose hr {
+  border-color: var(--color-border);
+}
+
+.prose img {
+  border-radius: 8px;
+}
+
+.prose figure figcaption {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Nav bar with glassmorphism */
+.nav-bar {
+  background: rgba(10, 15, 26, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.light .nav-bar {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Nav link styles */
+.nav-link {
+  padding: 0.5rem 1rem;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  transition: all 0.15s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-headings);
+  background: var(--color-card-hover);
+}
+
+.nav-link-active {
+  color: var(--color-headings);
+  background: var(--color-card);
+}
+
+/* Button styles */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: var(--color-accent);
+  color: white;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-radius: 9999px;
+  transition: all 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+  color: white;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  font-size: 0.875rem;
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  transition: all 0.15s ease;
+}
+
+.btn-secondary:hover {
+  color: var(--color-headings);
+  border-color: var(--color-border-strong);
+  background: var(--color-card);
+}
+
+/* Card styles */
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.15s ease;
+}
+
+.card:hover {
+  background: var(--color-card-hover);
+  border-color: var(--color-border-strong);
+}
+
+/* Accent text */
+.text-accent {
+  color: var(--color-accent);
+}
+
+/* Label/tag styles */
+.label {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* Divider */
+.divider {
+  border-top: 1px solid var(--color-border);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-accent);
+  color: white;
 }
