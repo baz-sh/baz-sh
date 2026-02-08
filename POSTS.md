@@ -14,3 +14,8 @@ some ideas for posts.
 - [ ] Raycast is awesome
   > despite not using it anymore
 - [ ] DRY is an anti pattern
+- [ ] Karabiner elements
+
+### Updates
+
+- [ ] US UK Remap, this can be done more easily with karabiner
