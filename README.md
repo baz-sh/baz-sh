@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Baz</h1>
 
 <p align="center">
-  Software Engineer from Manchester, UK
+  📍 <strong>Manchester, UK</strong> | 🤖 <strong>Polyagentmorous builder</strong> | 🌀 <strong>Disney</strong>
 </p>
 
 <p align="center">
