@@ -1,6 +1,6 @@
 # Hi 👋, I'm Baz
 
-📍 **Manchester, UK** | 🤖 **Polyagentmorous builder** | 🌀 **Disney**
+📍 **Manchester, UK** | 🤖 **Polyglot dev** | 🌀 **Disney**
 
 <p>
   <img src="https://img.shields.io/badge/-Go-00ADD8?style=flat-square&logo=go&logoColor=white" />
