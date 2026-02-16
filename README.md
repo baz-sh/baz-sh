@@ -1,10 +1,8 @@
-<h1 align="center">Hi 👋, I'm Baz</h1>
+# Hi 👋, I'm Baz
 
-<p align="center">
-  📍 <strong>Manchester, UK</strong> | 🤖 <strong>Polyagentmorous builder</strong> | 🌀 <strong>Disney</strong>
-</p>
+📍 **Manchester, UK** | 🤖 **Polyagentmorous builder** | 🌀 **Disney**
 
-<p align="center">
+<p>
   <img src="https://img.shields.io/badge/-Go-00ADD8?style=flat-square&logo=go&logoColor=white" />
   <img src="https://img.shields.io/badge/-Rust-000000?style=flat-square&logo=rust&logoColor=white" />
   <img src="https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
