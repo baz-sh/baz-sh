@@ -35,3 +35,4 @@ NeoVim user developing on macOS with containers.
 
 - **[neovimari](https://github.com/baz-sh/neovimari)** - A modern port of Vimari
 - **[rtt-cli](https://github.com/baz-sh/rtt-cli)** - Realtime trains CLI. Get train time information from your terminal!
+- **[clsm](https://github.com/baz-sh/clsm)** - Session management and explorer for Claude
