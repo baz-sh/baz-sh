@@ -8,7 +8,7 @@ some ideas for posts.
 - [ ] writing my own safari extension
   > motivation, approach, future plans
 - [ ] Nuphy AIR v3?
-- [ ] Skills to automate workflows
+- [ ] Skills (AI Skills) to automate workflows e.g. slash commands / skills
 - [ ] You probably don't need MCP
 - [ ] RTT CLI
 - [ ] Raycast is awesome
