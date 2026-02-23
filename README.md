@@ -13,7 +13,7 @@
 
 ---
 
-Passionate about tinkering with computers and code since childhood. I build and maintain distributed systems, cloud infrastructure, and web and client applications.
+Passionate about tinkering with computers and code since childhood. I build and maintain distributed systems, cloud infrastructure, web and client applications.
 
 Currently working primarily with **Go** at work, with strong experience in **TypeScript/JavaScript**, **Node** and **Python**.
 
