@@ -15,6 +15,7 @@ some ideas for posts.
   > despite not using it anymore
 - [ ] DRY is an anti pattern
 - [ ] Karabiner elements
+- [ ] CLSM
 
 ### Updates
 
