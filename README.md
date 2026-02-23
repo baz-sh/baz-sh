@@ -15,7 +15,7 @@
 
 Passionate about tinkering with computers and code since childhood. I build and maintain distributed systems, cloud infrastructure, and web and client applications.
 
-Currently working primarily with **Go** at work, with strong experience in **TypeScript/JavaScript**, **Node** and **Python**. Recently started exploring **Rust**.
+Currently working primarily with **Go** at work, with strong experience in **TypeScript/JavaScript**, **Node** and **Python**.
 
 I enjoy building CLI applications and tinkering with developer tools.
 
