@@ -16,6 +16,7 @@ some ideas for posts.
 - [ ] DRY is an anti pattern
 - [ ] Karabiner elements
 - [ ] CLSM
+- [ ] Where is the quality / care with all this extra time?
 
 ### Updates
 
