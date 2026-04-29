@@ -2,14 +2,17 @@
 
 📍 **Manchester, UK** | 🤖 **Polyglot dev** | 🌀 **Disney**
 
-<p>
-  <a href="https://golang.org" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original.svg" alt="Go" width="40" height="40"/></a>
-  <a href="https://www.typescriptlang.org" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="TypeScript" width="40" height="40"/></a>
-  <a href="https://www.python.org" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" width="40" height="40"/></a>
-  <a href="https://www.docker.com" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" alt="Docker" width="40" height="40"/></a>
-  <a href="https://neovim.io" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/neovim/neovim-original.svg" alt="Neovim" width="40" height="40"/></a>
-  <a href="https://claude.ai" target="_blank" rel="noreferrer"><picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/anthropic/white"><img src="https://cdn.simpleicons.org/anthropic/black" alt="Claude" width="40" height="40"/></picture></a>
-</p>
+  <code><a href="https://golang.org"><img height="40" alt="Go"
+  src="https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original.svg"></a></code>
+  <code><a href="https://www.typescriptlang.org"><img height="40" alt="TypeScript"
+  src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"></a></code>
+  <code><a href="https://www.python.org"><img height="40" alt="Python"
+  src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"></a></code>
+  <code><a href="https://www.docker.com"><img height="40" alt="Docker"
+  src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg"></a></code>
+  <code><a href="https://neovim.io"><img height="40" alt="Neovim"
+  src="https://raw.githubusercontent.com/devicons/devicon/master/icons/neovim/neovim-original.svg"></a></code>
+  <code><a href="https://claude.ai"><img height="40" alt="Claude" src="https://cdn.simpleicons.org/anthropic/black"></a></code>
 
 ---
 
