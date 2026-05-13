@@ -20,7 +20,7 @@ Passionate about tinkering with computers and code since childhood. I build and 
 
 Currently working primarily with **Go** at work, with strong experience in **TypeScript/JavaScript**, **Node** and **Python**.
 
-I enjoy building CLI applications and tinkering with developer tools.
+I enjoy building Products, CLI applications and tinkering with developer tools. User and Developer experience are very important to me and always at the forefront of my mind when building.
 
 NeoVim user developing on macOS with containers.
 
