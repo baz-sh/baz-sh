@@ -18,6 +18,8 @@
   --color-border-strong: rgba(255, 255, 255, 0.2);
   --color-card: rgba(255, 255, 255, 0.03);
   --color-card-hover: rgba(255, 255, 255, 0.06);
+  --color-code-bg: rgba(255, 255, 255, 0.05);
+  --color-code-border: rgba(255, 255, 255, 0.22);
 }
 
 .light {
@@ -33,6 +35,8 @@
   --color-border-strong: rgba(0, 0, 0, 0.2);
   --color-card: rgba(0, 0, 0, 0.02);
   --color-card-hover: rgba(0, 0, 0, 0.04);
+  --color-code-bg: rgba(0, 0, 0, 0.06);
+  --color-code-border: rgba(0, 0, 0, 0.13);
 }
 
 @theme inline {
@@ -49,6 +53,8 @@
   --color-border-strong: var(--color-border-strong);
   --color-card: var(--color-card);
   --color-card-hover: var(--color-card-hover);
+  --color-code-bg: var(--color-code-bg);
+  --color-code-border: var(--color-code-border);
 
   --font-sans: 'iA Writer Quattro',
     -apple-system,
@@ -174,10 +180,14 @@ a:hover {
 }
 
 .prose code:not(pre code) {
-  background: var(--color-card);
-  padding: 0.2em 0.4em;
+  background: var(--color-code-bg);
+  border: 1px solid var(--color-code-border);
+  padding: 0.1em 0.35em;
   border-radius: 4px;
   font-size: 0.9em;
+  overflow-wrap: break-word;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 /* Remove backticks that Tailwind Typography adds around inline code */
