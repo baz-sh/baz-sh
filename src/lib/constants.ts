@@ -28,7 +28,7 @@ export const DEFAULT_CONFIGURATION: DefaultConfigurationType = {
   author: {
     avatar,
     name: 'Barry Hall',
-    headline: 'Senior Software Engineer',
+    headline: 'Lead Software Engineer',
     username: 'baz.sh',
     location: 'Manchester, UK'
   },

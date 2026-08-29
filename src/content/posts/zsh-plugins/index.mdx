@@ -4,64 +4,138 @@ date: 2025-07-16
 image: ./zsh.png
 seo:
   title: Useful ZSH Plugins
-  description: A collection of useful ZSH plugins to boost your terminal productivity
+  description: A collection of useful ZSH plugins and tools to boost your terminal productivity
   type: article
   keywords: zsh, shell, terminal, productivity, plugins
 ---
+
+> **Update, August 2026:** I dropped oh-my-zsh since I first wrote this. I've revised
+> the post to match what I actually run now: plain zsh, two plugins, and a handful of
+> tools around it.
 
 Using the terminal today is almost essential, especially if you want to be fast and
 efficient when it comes to using your computer and executing commands. Wherever
 possible, I like to keep my tooling simple and effective so I can focus on the task at
 hand.
 
-My current shell of choice is ZSH (specifically; oh-my-zsh), which is
-highly customizable and extensible. There are many plugins available that can
-enhance your ZSH experience and boost your productivity and here are some useful ZSH
-plugins that I find help maximize my terminal experience for not a lot of effort.
+My shell of choice is ZSH. I used to run it with oh-my-zsh, and for a long time that
+was fine. What changed my mind was not speed, it was that I couldn't tell you which
+behaviour came from the framework and which came from zsh itself. I was loading a
+lot to get a handful of things I used. So I took it out and built the small part
+back by hand.
 
 I am aware there are many other shells and plugins and would really like to try something
 like Fish, but I'm too busy with other priorities right now. With that out the way,
-here are some of my favorite ZSH plugins that I believe offer a lot of value for minimal
-amount of effort and configuration.
+here is what I run and what it took to replace the framework.
 
-## Git
+## Life without a framework
 
-Comes by default with oh-my-zsh, it's a really great default! This plugin provides a
-set of aliases and functions for working with Git. It simplifies many common Git
-commands and makes it easier to work with Git repositories directly from the terminal.
-For example, instead of typing `git status`, you can simply type `gst`. Here are
-some other examples of the aliases provided by the Git plugin:
+There's no plugin manager, so a plugin is just a file you source. I keep mine in
+`~/.zsh/plugins` and clone them with git:
+
+```bash
+git clone https://github.com/Aloxaf/fzf-tab ~/.zsh/plugins/fzf-tab
+git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/plugins/zsh-syntax-highlighting
+```
+
+Then two lines in `.zshrc`:
 
 ```zsh
-# Examples!
-gst # git status
-gaa # git add all
-gc -m "foo!" # git commit with message
+source ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ```
+
+To update one, `git pull` in its directory. That's the whole plugin system, and it's
+the part I now like most: two plugins, two lines, no magic.
+
+The framework was also setting up completion and history for me, so that had to be
+replaced. Completion first:
+
+```zsh
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # case-insensitive matching
+zstyle ':completion:*' menu select                  # highlight selection
+zstyle ':completion:*' special-dirs true            # complete . and ..
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+```
+
+The conditional is worth explaining. Rebuilding the completion cache is the slow part
+of starting a shell. That glob pattern asks whether `~/.zcompdump` was last modified
+more than 24 hours ago. If it was, do the full `compinit`. Otherwise run `compinit -C`,
+which trusts the existing cache and skips the checks. So you pay for the rebuild once
+a day rather than on every new terminal.
+
+The `zstyle` lines are the small comforts. Case-insensitive matching means `cd dow`
+finds `Downloads`. `menu select` gives you an arrow-key menu instead of a wall of text.
+
+Then history:
+
+```zsh
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt share_history
+```
+
+`hist_ignore_space` is the one I'd point at. Start a command with a space and it never
+reaches your history file, which is handy when a token or password is on the line.
+`share_history` means a command run in one terminal shows up in the others.
+
+That's roughly 25 lines to replace the framework.
+
+## Git aliases
+
+The oh-my-zsh git plugin was the piece I used most. It gave you short aliases like
+`gst` for `git status` and `gaa` for `git add --all`. Rather than pull that plugin in
+on its own, I moved what I actually used into `~/.gitconfig`:
+
+```ini
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date-order
+	lb = for-each-ref --sort=-committerdate --count=10 --format='%(refname:short)' refs/heads/
+	wbt = shortlog -sn --no-merges
+```
+
+`git lg` gives me a readable commit graph, `git lb` lists my ten most recently used
+branches, and `git wbt` shows who has committed the most. For anything more involved
+I reach for [lazygit](https://github.com/jesseduffield/lazygit), which I have aliased
+to `lg` in the shell.
 
 Like many tools I often find a good way to learn is to _need_ it. What I mean by this
 is if you are aware of a tool, install it and try some of the "porcelain" commands
-like `gst`, `ga`, `gc`, etc. and then try to expand on the commands as and when you need
-them. Initially this will absolutely slow you down, but it's a compound investment
-that means you'll get that time back and learn more about the tool. Sure, it's
-possibly a slower way to use it in order to learn it, but I find I get more out of
-it and learn better when I actually need something, rather than reading the docs and
-trying to remember and recall everything. I've wasted many hours in the past reading
+like `git status`, `git add`, `git commit`, etc. and then try to expand on the commands
+as and when you need them. Initially this will absolutely slow you down, but it's a
+compound investment that means you'll get that time back and learn more about the tool.
+Sure, it's possibly a slower way to use it in order to learn it, but I find I get more
+out of it and learn better when I actually need something, rather than reading the docs
+and trying to remember and recall everything. I've wasted many hours in the past reading
 _all_ the commands etc only to need to go look them up again once I've come to need it,
 so save that initial effort and use the high level stuff and look the others up
 as you need to.
 
-You can also find a full list of aliases in the
-[oh-my-zsh Git Cheat Sheet](https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index).
+## fzf-tab
 
-## ZSH Autosuggestions
+[fzf-tab](https://github.com/Aloxaf/fzf-tab) is the one I added after leaving the
+framework, and it's the one I'd miss most. It replaces the completion menu with an
+[fzf](https://github.com/junegunn/fzf) window, so tab gives you a fuzzy search over the
+matches instead of a static list.
 
-[ZSH Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) does what it says on the tin.
-It suggests commands as you type based on your command history and completions. This can
-significantly speed up your workflow by reducing the amount of typing you need to do!
+It earns its place anywhere the list is long. `git checkout <tab>` in a repo with fifty
+branches, `kill <tab>` over running processes, `cd <tab>` somewhere deep in a tree. You
+type a few characters of what you want rather than reading the options.
 
-To complete, simply press the right arrow key to accept the suggestion, or continue
-typing to ignore it.
+It needs fzf installed, and it has to be sourced _after_ `compinit`. That's why it sits
+below the completion block in my `.zshrc` rather than at the top with the other setup.
 
 ## ZSH Syntax Highlighting
 
@@ -73,6 +147,9 @@ type, which can help you catch mistakes before you run them.
 For example, if you type a valid command, it will be highlighted in green, while an
 invalid command will be highlighted in red. This visual feedback can help you avoid
 common mistakes and improve your command line experience.
+
+One rule to know: source it last. It works by wrapping the line editor, so anything
+you source after it can undo the highlighting.
 
 ![ZSH Syntax Highlighting Demo](./zsh-syntax.gif)
 
@@ -93,15 +170,14 @@ across devices using a cloud storage provider like Dropbox or Google Drive, but
 this is a purely optional feature.
 
 It's very easy to configure, simply create a file at `~/.config/atuin/config.toml`
-and you are off and running. Some config options I really like include:
+and you are off and running. The one setting I'd turn on straight away:
 
 ```toml
-filter_mode_shell_up_key_binding = "directory"
+enter_accept = true
 ```
 
-This one means when I use the up arrow key, it will filter the history
-by the current directory, which is super useful when you are working in a specific
-directory and want to find commands related to that directory.
+That makes `enter` run the highlighted command rather than only putting it on the line
+for you to confirm. It's one keystroke, but you hit it dozens of times a day.
 
 A bunch of things I like to filter out of my history include:
 
@@ -123,7 +199,8 @@ An important point to note is that after you've chosen to remove something,
 you'll need to run `atuin history prune` to remove them from the SQLite database.
 
 This is so I don't see tons of entries of commands I don't care about, like
-`ls`, `cd`, `clear`, etc.
+`ls`, `cd`, `clear`, etc. Mine has roughly doubled in length since I first wrote this
+— every time an alias of mine starts showing up in search results, it gets a line here.
 
 You can either press `tab` from the list to add an entry to then adjust or run
 it, or you can press `enter` to run the command directly. I find this
@@ -172,5 +249,27 @@ ranks directories by frequency and recency, so it gets better the more you use i
 You can also use `ji` (or `ji SomeProject`) for interactive selection with fzf,
 which is handy when you have multiple matches.
 
-And that's it for my current favorite ZSH plugins and tools,
-I hope you find this useful or this has inspired you to visit your own tooling setup!
+## The rest of the line-up
+
+Three more that aren't plugins but do a lot of the work:
+
+- **[starship](https://starship.rs)** for the prompt. One `starship.toml`, and it
+  works the same in any shell. Replacing the framework's theme system was the easiest
+  part of the whole move.
+- **[mise](https://mise.jdx.dev)** for tool versions. One tool instead of nvm, pyenv
+  and friends, and it picks up the right versions per project.
+- **`edit-command-line`**, which ships with zsh. Three lines and `control + x`
+  followed by `control + e` opens the current command in `$EDITOR`:
+
+```zsh
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+```
+
+That last one is worth the three lines the first time you're halfway through a long
+`docker run` and want a real editor.
+
+And that's my current setup. It's smaller than what I had, I know what every line does,
+and nothing in it is hard to remove. I hope you find this useful or it has inspired you
+to revisit your own tooling setup!
