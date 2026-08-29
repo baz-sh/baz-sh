@@ -1,6 +1,6 @@
 # Hi 👋, I'm Baz
 
-📍 **Manchester, UK** | 🤖 **Polyglot dev** | 🌀 **Disney**
+📍 **Manchester, UK** | 🤖 **Polyglot dev** | 🌀 **Lead Engineer @ Disney**
 
   <code><a href="https://golang.org"><img height="40" alt="Go"
   src="https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original.svg"></a></code>
