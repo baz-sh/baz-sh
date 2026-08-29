@@ -1,0 +1,33 @@
+/* iA Writer Quattro and Mono — variable weight axis 400-700.
+   Source: https://github.com/iaolo/iA-Fonts (SIL Open Font License 1.1) */
+@font-face {
+  font-family: "iA Writer Quattro";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("./iAWriterQuattroV.ttf") format("truetype-variations");
+}
+
+@font-face {
+  font-family: "iA Writer Quattro";
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("./iAWriterQuattroV-Italic.ttf") format("truetype-variations");
+}
+
+@font-face {
+  font-family: "iA Writer Mono";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("./iAWriterMonoV.ttf") format("truetype-variations");
+}
+
+@font-face {
+  font-family: "iA Writer Mono";
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("./iAWriterMonoV-Italic.ttf") format("truetype-variations");
+}

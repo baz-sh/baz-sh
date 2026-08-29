@@ -20,20 +20,10 @@ const { Content, remarkPluginFrontmatter } = await render(entry);
 ---
 
 <BaseLayout seo={entry.data.seo}>
-  <Container as="article" class="py-12">
-    <!-- Back Link -->
-    <a 
-      href="/writing" 
-      class="inline-flex items-center gap-2 text-sm text-text-muted hover:text-text-secondary transition-colors mb-8"
-    >
-      <span>←</span>
-      <span>Back to writing</span>
-    </a>
-
+  <Container as="article" class="pt-8 pb-16">
     <!-- Article Header -->
-    <header class="mb-10">
-      <span class="label mb-4 block">Article</span>
-      <h1 class="text-3xl sm:text-4xl font-bold text-headings mb-4 leading-tight">
+    <header class="mb-6">
+      <h1 class="text-2xl font-bold text-headings mb-4 leading-tight">
         {entry.data.title}
       </h1>
       <div class="flex items-center gap-4 text-sm text-text-muted pt-4 border-t border-border">
@@ -49,7 +39,7 @@ const { Content, remarkPluginFrontmatter } = await render(entry);
 
     <!-- Featured Image -->
     {entry.data.image && (
-      <figure class="mb-10">
+      <figure class="mb-6">
         <Image
           src={entry.data.image}
           alt={entry.data.title}
@@ -59,7 +49,7 @@ const { Content, remarkPluginFrontmatter } = await render(entry);
     )}
 
     <!-- Article Content -->
-    <div class="prose prose-lg max-w-none">
+    <div class="prose max-w-none">
       <Content />
     </div>
 

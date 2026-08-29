@@ -5,7 +5,7 @@ module.exports = {
       typography: () => ({
         DEFAULT: {
           css: {
-            fontFamily: `'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, '"Apple Color Emoji"','"Segoe UI Emoji"', 'Segoe UI Symbol','"Noto Color Emoji"'`,
+            fontFamily: 'var(--font-sans)',
             '--tw-prose-body': 'var(--color-foreground)',
             '--tw-prose-headings': 'var(--color-headings)',
             // '--tw-prose-lead': 'var(--color-pink-700)',

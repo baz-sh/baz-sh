@@ -35,7 +35,7 @@ const links = await getCollection('links')
     <!-- About Section -->
     <section class="mb-12">
       <span class="label mb-4 block">About</span>
-      <div class="prose prose-lg max-w-none">
+      <div class="prose max-w-none">
         <Content />
       </div>
     </section>
@@ -60,7 +60,7 @@ const links = await getCollection('links')
                 href={link.data.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-headings font-medium hover:text-accent transition-colors"
+                class="text-headings font-normal hover:text-accent transition-colors"
               >
                 {link.data.name}
               </a>

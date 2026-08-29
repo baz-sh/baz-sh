@@ -36,40 +36,4 @@ export default defineConfig({
       syntaxHighlight: 'shiki',
     }),
   ],
-  experimental: {
-    fonts: [
-      {
-        name: 'Zilla Slab',
-        cssVariable: '--font-zilla-slab',
-        provider: 'local',
-        variants: [
-          {
-            src: ['./src/assets/fonts/ZillaSlab-Light.ttf'],
-            style: 'normal',
-            weight: 300,
-          },
-          {
-            src: ['./src/assets/fonts/ZillaSlab-Regular.ttf'],
-            style: 'normal',
-            weight: 400,
-          },
-          {
-            src: ['./src/assets/fonts/ZillaSlab-Medium.ttf'],
-            style: 'normal',
-            weight: 500,
-          },
-          {
-            src: ['./src/assets/fonts/ZillaSlab-SemiBold.ttf'],
-            style: 'normal',
-            weight: 600,
-          },
-          {
-            src: ['./src/assets/fonts/ZillaSlab-Bold.ttf'],
-            style: 'normal',
-            weight: 700,
-          },
-        ],
-      },
-    ],
-  },
 });
