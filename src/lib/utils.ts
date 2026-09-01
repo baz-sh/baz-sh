@@ -13,6 +13,37 @@ export const formatDate = (date: Date) => {
   return formatter.format(new Date(date));
 };
 
+// Day and month only, for lists that already group by year
+export const formatDateShort = (date: Date) => {
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+
+  return formatter.format(new Date(date));
+};
+
+export const getYear = (date: Date) =>
+  new Date(date).getUTCFullYear();
+
+export const groupPostsByYear = (posts: CollectionEntry<'posts'>[]) => {
+  const groups = new Map<number, CollectionEntry<'posts'>[]>();
+
+  for (const post of posts) {
+    const year = getYear(post.data.date);
+    const group = groups.get(year);
+    if (group) {
+      group.push(post);
+    } else {
+      groups.set(year, [post]);
+    }
+  }
+
+  // Posts arrive sorted newest first, so the years come out in the same order
+  return [...groups.entries()].map(([year, entries]) => ({ year, entries }));
+};
+
 export const generateAbsoluteUrl = (path: string) =>
   DEFAULT_CONFIGURATION.baseUrl.concat(path);
 

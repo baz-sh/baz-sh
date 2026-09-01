@@ -1,30 +1,25 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { formatDate } from '@/lib/utils';
-import { render } from 'astro:content';
+import { formatDateShort } from '@/lib/utils';
 
 interface Props {
   entry: CollectionEntry<'posts'>;
 }
 
 const { entry } = Astro.props;
-const { remarkPluginFrontmatter } = await render(entry);
 ---
 
-<a 
-  href={`/writing/${entry.id}/`} 
-  class="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 py-4 -mx-4 px-4 rounded-lg hover:bg-card transition-colors"
+<a
+  href={`/writing/${entry.id}/`}
+  class="group flex items-baseline justify-between gap-6 py-2 -mx-3 px-3 rounded-md hover:bg-card transition-colors"
 >
-  <time class="hidden sm:block text-sm text-text-muted shrink-0 w-28 tabular-nums">
-    {formatDate(entry.data.date)}
+  <span class="text-headings group-hover:text-accent transition-colors">
+    {entry.data.title}
+  </span>
+  <time
+    datetime={entry.data.date.toISOString()}
+    class="text-sm text-text-muted shrink-0 tabular-nums"
+  >
+    {formatDateShort(entry.data.date)}
   </time>
-  <div class="flex-1 min-w-0">
-    <h2 class="text-headings font-normal group-hover:text-accent transition-colors">
-      {entry.data.title}
-    </h2>
-    <div class="text-sm text-text-muted">
-      <span class="sm:hidden">{formatDate(entry.data.date)} · </span>
-      <span>{remarkPluginFrontmatter.minutesRead}</span>
-    </div>
-  </div>
 </a>
