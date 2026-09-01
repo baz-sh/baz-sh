@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "scripts": {
-    "copy-images": "mkdir -p public/writing && cp -r src/content/posts/* public/writing/",
+    "copy-images": "mkdir -p public/writing && cp -r src/content/posts/* public/writing/ && find public/writing -name '*.mdx' -delete",
     "dev": "npm run copy-images && astro dev",
     "build": "npm run copy-images && astro build",
     "preview": "astro preview",
