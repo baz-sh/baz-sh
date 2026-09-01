@@ -23,9 +23,10 @@
 }
 
 .light {
-  /* Warm cream paper */
+  /* Warm cream paper. Paper does not glow, so raised surfaces
+     go darker than the page here, not lighter. */
   --color-bg: #f6eee1;
-  --color-bg-elevated: #fbf6ec;
+  --color-bg-elevated: #ece0cd;
   --color-text: #3a352e;
   --color-text-secondary: #5b544a;
   --color-text-muted: #8a8175;
@@ -234,7 +235,7 @@ a:hover {
 }
 
 .light .nav-bar {
-  background: rgba(251, 246, 236, 0.75);
+  background: rgba(236, 224, 205, 0.8);
 }
 
 /* Nav link styles */
@@ -254,7 +255,7 @@ a:hover {
 
 .nav-link-active {
   color: var(--color-headings);
-  background: var(--color-card);
+  background: var(--color-card-hover);
   font-weight: 700;
 }
 

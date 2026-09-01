@@ -13,7 +13,6 @@ const years = groupPostsByYear(sortPostsByDate(await getCollection('posts')));
   <Container as="section" class="py-6">
     <!-- Header -->
     <header class="mb-12">
-      <span class="label mb-4 block">Blog</span>
       <h1 class="text-2xl font-bold text-headings mb-4">Writing</h1>
       <p class="text-text-secondary text-lg">
         Thoughts on code, software engineering, AI, and whatever else I'm thinking about.
@@ -24,7 +23,7 @@ const years = groupPostsByYear(sortPostsByDate(await getCollection('posts')));
     <div class="space-y-10">
       {years.map(({ year, entries }) => (
         <section>
-          <h2 class="text-sm text-text-muted tabular-nums mb-2">{year}</h2>
+          <h2 class="text-sm font-normal text-text-muted tabular-nums mb-2">{year}</h2>
           <div class="space-y-1">
             {entries.map((post) => <PostPreview entry={post} />)}
           </div>
