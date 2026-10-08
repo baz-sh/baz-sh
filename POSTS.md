@@ -18,3 +18,5 @@ some ideas for posts.
 ### Updates
 
 - [ ] US UK Remap, this can be done more easily with karabiner
+
+Interesting anti patterns article https://refactoringenglish.com/blog/anti-patterns-software-blogging/
